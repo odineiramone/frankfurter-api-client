@@ -1,9 +1,9 @@
-defmodule FrankfurterApiWrapper.MixProject do
+defmodule FrankfurterApiClient.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :frankfurter_api_wrapper,
+      app: :frankfurter_api_client,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),

@@ -7,7 +7,7 @@
 # Configuração geral da aplicação
 import Config
 
-config :frankfurter_api_wrapper,
+config :frankfurter_api_client,
   http_client: Req
 
 # Importa a configuração específica por ambiente. Essa linha precisa

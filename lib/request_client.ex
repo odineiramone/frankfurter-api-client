@@ -30,6 +30,6 @@ defmodule RequestClient do
   defp process_response(message), do: {:error, message}
 
   defp http_client() do
-    Application.get_env(:frankfurter_api_wrapper, :http_client)
+    Application.get_env(:frankfurter_api_client, :http_client)
   end
 end

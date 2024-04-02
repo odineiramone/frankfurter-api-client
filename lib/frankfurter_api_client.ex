@@ -1,6 +1,6 @@
-defmodule FrankfurterApiWrapper do
+defmodule FrankfurterApiClient do
   @moduledoc """
-  Documentation for `FrankfurterApiWrapper`.
+  Documentation for `FrankfurterApiClient`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule FrankfurterApiWrapper do
 
   ## Examples
 
-      iex> FrankfurterApiWrapper.hello()
+      iex> FrankfurterApiClient.hello()
       :world
 
   """
