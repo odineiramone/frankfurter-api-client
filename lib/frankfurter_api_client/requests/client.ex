@@ -1,4 +1,4 @@
-defmodule RequestClient do
+defmodule FrankfurterApiClient.Requests.Client do
   require Logger
 
   def get(url, params \\ []) do

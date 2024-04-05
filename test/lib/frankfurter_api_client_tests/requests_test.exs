@@ -1,4 +1,4 @@
-defmodule RequestsTest do
+defmodule FrankfurterApiClientTests.RequestsTest do
   use ExUnit.Case
 
   alias FrankfurterApiClient.Requests

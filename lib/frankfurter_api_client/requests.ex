@@ -1,28 +1,30 @@
 defmodule FrankfurterApiClient.Requests do
   @conversion_required_fields ~w(amount from to)a
 
-  def latest(get_request \\ &RequestClient.get/2, params \\ []) do
+  alias FrankfurterApiClient.Requests.Client
+
+  def latest(get_request \\ &Client.get/2, params \\ []) do
     (base_url() <> "/latest")
     |> get_request.(params)
   end
 
-  def historical(date, get_request \\ &RequestClient.get/2, params \\ []) do
+  def historical(date, get_request \\ &Client.get/2, params \\ []) do
     (base_url() <> "/" <> date) |> get_request.(params)
   end
 
-  def time_series(start_date, end_date, get_request \\ &RequestClient.get/2, params \\ []) do
+  def time_series(start_date, end_date, get_request \\ &Client.get/2, params \\ []) do
     IO.puts(base_url() <> "/" <> start_date <> ".." <> end_date)
 
     (base_url() <> "/" <> start_date <> ".." <> end_date)
     |> get_request.(params)
   end
 
-  def conversion(get_request \\ &RequestClient.get/2, params) do
+  def conversion(get_request \\ &Client.get/2, params) do
     get_request
     |> latest([@conversion_required_fields, fetch_values(params)] |> List.zip())
   end
 
-  def currencies(get_request \\ &RequestClient.get/2) do
+  def currencies(get_request \\ &Client.get/2) do
     (base_url() <> "/currencies") |> get_request.([])
   end
 

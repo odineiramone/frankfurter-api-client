@@ -1,5 +1,7 @@
-defmodule RequestClientTest do
+defmodule FrankfurterApiClientTests.RequestsTests.ClientTest do
   use ExUnit.Case
+
+  alias FrankfurterApiClient.Requests.Client
 
   describe "get/1" do
     test "recebendo resposta com status 200, retorna tupla de sucesso" do
@@ -7,7 +9,7 @@ defmodule RequestClientTest do
         response: %{status: 200, body: %{"content" => "content"}}
       ]
 
-      assert RequestClient.get("<apimock_url>", params) == {:ok, %{"content" => "content"}}
+      assert Client.get("<apimock_url>", params) == {:ok, %{"content" => "content"}}
     end
 
     test "recebendo resposta com status 404 e body vazio, retorna tupla de erro" do
@@ -15,7 +17,7 @@ defmodule RequestClientTest do
         response: %{status: 404, body: ""}
       ]
 
-      assert RequestClient.get("<apimock_url>", params) ==
+      assert Client.get("<apimock_url>", params) ==
                {:error, "No body returned for response"}
     end
 
@@ -24,7 +26,7 @@ defmodule RequestClientTest do
         response: %{status: 404, body: %{"message" => "error message"}}
       ]
 
-      assert RequestClient.get("<apimock_url>", params) == {:error, "error message"}
+      assert Client.get("<apimock_url>", params) == {:error, "error message"}
     end
 
     test "recebendo resposta com status 422, retorna tupla de erro com mensagem" do
@@ -32,13 +34,13 @@ defmodule RequestClientTest do
         response: %{status: 422, body: %{"message" => "error message"}}
       ]
 
-      assert RequestClient.get("<apimock_url>", params) == {:error, "error message"}
+      assert Client.get("<apimock_url>", params) == {:error, "error message"}
     end
 
     test "recebendo qualquer outra resposta, retorna tupla de erro com resposta" do
       params = [response: %{}]
 
-      assert RequestClient.get("<apimock_url>", params) == {:error, %{}}
+      assert Client.get("<apimock_url>", params) == {:error, %{}}
     end
   end
 end
