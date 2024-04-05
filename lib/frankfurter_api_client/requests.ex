@@ -13,8 +13,6 @@ defmodule FrankfurterApiClient.Requests do
   end
 
   def time_series(start_date, end_date, get_request \\ &Client.get/2, params \\ []) do
-    IO.puts(base_url() <> "/" <> start_date <> ".." <> end_date)
-
     (base_url() <> "/" <> start_date <> ".." <> end_date)
     |> get_request.(params)
   end
